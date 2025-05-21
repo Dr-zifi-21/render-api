@@ -10,7 +10,7 @@ const pool = new Pool({
   ssl: { rejectUnauthorized: false },
 });
 
-const apiUrl = "https://api.nobitex.ir/market/stats?&dstCurrency=usdt";
+const apiUrl = "https://api.nobitex.ir/market/stats?dstCurrency=usdt";
 
 // Helper: create table if it doesn't exist
 async function ensureTable(tableName) {
