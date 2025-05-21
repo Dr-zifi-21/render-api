@@ -41,14 +41,16 @@ async function fetchAndStore() {
     const time = now.toTimeString().slice(0, 8); // "HH:MM:SS"
 
     for (const [key, value] of Object.entries(stats)) {
-      // Ensure the table exists
-      await ensureTable(key);
-
-      // Insert row
-      await pool.query(
-        `INSERT INTO "${key}" (price, date, time) VALUES ($1, $2, $3)`,
-        [value.latest, date, time]
-      );
+      if (value.isClosed == false) {
+        // Ensure the table exists
+        await ensureTable(key);
+        console.log("price: ", value.latest);
+        // Insert row
+        await pool.query(
+          `INSERT INTO "${key}" (price, date, time) VALUES ($1, $2, $3)`,
+          [value.latest, date, time]
+        );
+      }
     }
   } catch (error) {
     console.error("Error in fetchAndStore:", error.toString());
