@@ -44,7 +44,6 @@ async function fetchAndStore() {
       if (value.isClosed == false) {
         // Ensure the table exists
         await ensureTable(key);
-        console.log("price: ", value.latest);
         // Insert row
         await pool.query(
           `INSERT INTO "${key}" (price, date, time) VALUES ($1, $2, $3)`,
