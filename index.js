@@ -51,6 +51,7 @@ async function fetchAndStore() {
         );
       }
     }
+    console.log("data added")
   } catch (error) {
     console.error("Error in fetchAndStore:", error.toString());
   }
