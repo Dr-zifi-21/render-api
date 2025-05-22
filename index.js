@@ -60,8 +60,13 @@ async function fetchAndStore() {
 // Run every 15 seconds
 setInterval(fetchAndStore, 15000);
 
-app.use((req, res) => {
-  axios.get("https://keep-alive-server-vioa.onrender.com/callback")
+app.use(async (req, res) => {
+  try {
+    await axios.get('https://keep-alive-server-vioa.onrender.com/callback');
+    res.send("Hello! The server received your request and notified the remote server.");
+  } catch (error) {
+    res.send("Hello! The server received your request (Failed to notify remote server).");
+  }
 });
 
 const PORT = process.env.PORT || 3000;
