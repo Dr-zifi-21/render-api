@@ -59,7 +59,9 @@ async function fetchAndStore() {
 // Run every 15 seconds
 setInterval(fetchAndStore, 15000);
 
-app.get("/", (req, res) => res.send("Stats API poller is running!"));
+app.use((req, res) => {
+  res.send("The server received");
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
