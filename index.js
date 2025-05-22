@@ -61,7 +61,7 @@ async function fetchAndStore() {
 setInterval(fetchAndStore, 15000);
 
 app.use((req, res) => {
-  res.send("The server received");
+  axios.get("https://keep-alive-server-vioa.onrender.com/callback")
 });
 
 const PORT = process.env.PORT || 3000;
