@@ -60,7 +60,7 @@ async function fetchAndStore() {
 // Run every 15 seconds
 setInterval(fetchAndStore, 15000);
 
-app.use(async (req, res) => {
+app.get("/live", async (req, res) => {
   try {
     await axios.get('https://keep-alive-server-vioa.onrender.com/callback');
     console.log("Hello! The server received your request and notified the remote server.");
