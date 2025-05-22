@@ -63,8 +63,10 @@ setInterval(fetchAndStore, 15000);
 app.get("/live", async (req, res) => {
   try {
     await axios.get('https://keep-alive-server-vioa.onrender.com/callback');
+    res.send("Ack");
     console.log("Hello! The server received your request and notified the remote server.");
   } catch (error) {
+    res.send("Ack");
     console.log("Hello! The server received your request (Failed to notify remote server).");
   }
 });
